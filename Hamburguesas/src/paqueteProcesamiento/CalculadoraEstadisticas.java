@@ -15,8 +15,9 @@ public class CalculadoraEstadisticas {
 	private List<Ingredientes> todosingredientes;
 	
 	
-	public CalculadoraEstadisticas(Map<String, Menu> menus){
+	public CalculadoraEstadisticas(Map<String, Menu> menus, Map<String, Ingredientes> todosingredientes){
 		this.menus = new ArrayList<Menu>(menus.values());
+		this.todosingredientes = new ArrayList<Ingredientes>(todosingredientes.values());
 	}
 	
 	public Collection<String> darNombresDeportes()
@@ -27,6 +28,13 @@ public class CalculadoraEstadisticas {
 			nombres.add(evento.darNombre());
 		}
 
+		return nombres;
+	}
+	public Collection<String> darNombresIngredientes(){
+		Collection<String> nombres = new HashSet<String>();
+		for (Ingredientes evento : todosingredientes) {
+			nombres.add(evento.darNombre());
+		}
 		return nombres;
 	}
 }

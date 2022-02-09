@@ -78,6 +78,15 @@ public class ConsolaHamburguesas {
 				{
 					System.out.println(" - " + dep);
 				}
+				calculadora = LoaderMenu.cargarArchivo("./data/ingredientes.txt");
+				System.out.println(" ");
+				System.out.println("Se está cargando la información de los ingredientes...");
+				Collection<String> ingredientes = calculadora.darNombresDeportes();
+				System.out.println("Ingredientes adicionales: ");
+				for (String dep : ingredientes)
+				{
+					System.out.println(" - " + dep);
+				}
 			}
 			catch (FileNotFoundException e)
 			{
