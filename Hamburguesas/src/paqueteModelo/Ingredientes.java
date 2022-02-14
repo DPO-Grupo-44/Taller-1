@@ -17,4 +17,5 @@ public class Ingredientes {
 	public int darPrecio() {
 		return precioad;
 	}
+	
 }
