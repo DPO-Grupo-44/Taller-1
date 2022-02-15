@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Collection;
 
+import paqueteModelo.Restaurante;
 import paqueteProcesamiento.CalculadoraEstadisticas;
 import paqueteProcesamiento.LoaderMenu;
 
 public class ConsolaHamburguesas {
 
-	private CalculadoraEstadisticas calculadora;
 	
 	public void ejecutarAplicacion() {
 		
@@ -23,9 +23,8 @@ public class ConsolaHamburguesas {
 			mostrarMenu();
 			int opcion_seleccionada = Integer.parseInt(input("Por favor seleccione una opci√≥n"));
 			if (opcion_seleccionada == 1) {
-				ejecutarCargaMenu();
-			}
-				
+				ejecutariniciarPedido();
+			}	
 			else if (opcion_seleccionada == 14)
 			{
 				System.out.println("Saliendo de la aplicaci√≥n ...");
@@ -46,7 +45,7 @@ public class ConsolaHamburguesas {
 		public void mostrarMenu()
 		{
 			System.out.println("\nOpciones de la aplicaci√≥n\n");
-			System.out.println("1. Cargar un archivo de atletas");
+			System.out.println("1. Iniciar un pedido");
 			System.out.println("14. Salir de la aplicaci√≥n\n");	
 		}
 		
@@ -66,38 +65,15 @@ public class ConsolaHamburguesas {
 			return null;
 		}
 		
-		private void ejecutarCargaMenu() {
-			try
-			{
-				calculadora = LoaderMenu.cargarArchivo("./data/menu.txt");
-				System.out.println(" ");
-				System.out.println("Se est· cargando la informaciÛn del menu...");
-				Collection<String> menus = calculadora.darNombresDeportes();
-				System.out.println("El men˙: ");
-				for (String dep : menus)
-				{
-					System.out.println(" - " + dep);
-				}
-				calculadora = LoaderMenu.cargarArchivo("./data/ingredientes.txt");
-				System.out.println(" ");
-				System.out.println("Se est· cargando la informaciÛn de los ingredientes...");
-				Collection<String> ingredientes = calculadora.darNombresDeportes();
-				System.out.println("Ingredientes adicionales: ");
-				for (String dep : ingredientes)
-				{
-					System.out.println(" - " + dep);
-				}
-			}
-			catch (FileNotFoundException e)
-			{
-				System.out.println("ERROR: el archivo indicado no se encontr√≥.");
-			}
-			catch (IOException e)
-			{
-				System.out.println("ERROR: hubo un problema leyendo el archivo.");
-				System.out.println(e.getMessage());
-			}
+		private void ejecutariniciarPedido() {
+			System.out.println("Se est· iniciando el pedido..." + "\n");
+			String nombre = input("Por favor ingrese su nombre");
+			String direccion = input("Por favor ingrese su direccion");
+			Restaurante restaurante = new Restaurante();
+			restaurante.iniciarPedido(nombre, direccion);
+			
 		}
+		
 		
 		public static void main(String[] args)
 		{

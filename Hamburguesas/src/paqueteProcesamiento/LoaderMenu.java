@@ -9,6 +9,7 @@ import java.util.Map;
 
 import paqueteModelo.Ingredientes;
 import paqueteModelo.Menu;
+import paqueteModelo.Producto;
 
 
 public class LoaderMenu {
@@ -16,7 +17,7 @@ public class LoaderMenu {
 	public static CalculadoraEstadisticas cargarArchivo(String nombreArchivo) throws FileNotFoundException, IOException
 	{
 		Map<String, Menu> menus = new HashMap<>();
-		Map<String, Ingredientes> todosingredientes = new HashMap<>();
+		Map<String, Producto> todosproductos = new HashMap<>();
 		
 		BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
 		String linea = br.readLine(); 
@@ -37,8 +38,7 @@ public class LoaderMenu {
 		}
 		
 		br.close();
-		System.out.print(menus);
-		CalculadoraEstadisticas calculadora = new CalculadoraEstadisticas(menus, todosingredientes);
+		CalculadoraEstadisticas calculadora = new CalculadoraEstadisticas(menus, todosproductos);
 		return calculadora;
 	}
 }

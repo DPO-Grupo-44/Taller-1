@@ -5,13 +5,12 @@ import java.util.ArrayList;
 public class ProductoAjustado implements Producto {
 	private ProductoMenu base;
 	private ArrayList<Ingredientes> iagregados;
-	private ArrayList<Ingredientes> ieliminados;
 	private int precioFinal;
 	
 	public ProductoAjustado( ProductoMenu tbase) {
 		base = tbase;
 		iagregados = new ArrayList<Ingredientes>();
-		ieliminados = new ArrayList<Ingredientes>();
+
 	}
 	
 	
@@ -26,13 +25,13 @@ public class ProductoAjustado implements Producto {
 
 
 	public String getNombre() {
-
-		return null;
+		return ("Ingredientes: " + iagregados);
 	}
 
 	public String generaTextoFactura() {
-		
-		return null;
+		int precio = getPrecio();
+		String rta = ("El pedido consta de " + iagregados + "y tiene un precio de $" + precio);
+		return rta;
 	}
 	
 	public void agregarAgregados(Ingredientes ing) {

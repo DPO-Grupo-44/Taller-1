@@ -8,16 +8,17 @@ import java.util.Map;
 
 import paqueteModelo.Ingredientes;
 import paqueteModelo.Menu;
+import paqueteModelo.Producto;
 
 
 public class CalculadoraEstadisticas {
 	private List<Menu> menus;
-	private List<Ingredientes> todosingredientes;
+	private List<Producto> todosproductos;
 	
 	
-	public CalculadoraEstadisticas(Map<String, Menu> menus, Map<String, Ingredientes> todosingredientes){
+	public CalculadoraEstadisticas(Map<String, Menu> menus, Map<String, Producto> todosproductos){
 		this.menus = new ArrayList<Menu>(menus.values());
-		this.todosingredientes = new ArrayList<Ingredientes>(todosingredientes.values());
+		this.todosproductos = new ArrayList<Producto>(todosproductos.values());
 	}
 	
 	public Collection<String> darNombresDeportes()
@@ -32,9 +33,15 @@ public class CalculadoraEstadisticas {
 	}
 	public Collection<String> darNombresIngredientes(){
 		Collection<String> nombres = new HashSet<String>();
-		for (Ingredientes evento : todosingredientes) {
-			nombres.add(evento.darNombre());
+		for (Producto evento : todosproductos) {
+			nombres.add(evento.getNombre());
 		}
 		return nombres;
+	}
+	
+	public Producto darIngredientePosicion(int i){
+		System.out.println(todosproductos.isEmpty());
+		Producto ingrediente = todosproductos.get(i);
+		return ingrediente;
 	}
 }
