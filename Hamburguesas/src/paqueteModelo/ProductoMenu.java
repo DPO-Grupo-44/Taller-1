@@ -5,7 +5,7 @@ public class ProductoMenu implements Producto{
 	private int precio;
 
 	
-	ProductoMenu(String tnombre, int tprecio){
+	public ProductoMenu(String tnombre, int tprecio){
 		nombre = tnombre;
 		precio = tprecio;
 		
